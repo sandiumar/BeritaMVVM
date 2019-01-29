@@ -37,7 +37,7 @@ configurations.all {
 }
 
 dependencies {
-    def room_version = "1.1.0"
+    def room_version = "1.1.1"
     def support_version = "28.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -79,6 +79,8 @@ dependencies {
     implementation "com.google.dagger:dagger-android:2.15"
     implementation "com.google.dagger:dagger-android-support:2.15"
     kapt "com.google.dagger:dagger-android-processor:2.15"
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
 
 
 

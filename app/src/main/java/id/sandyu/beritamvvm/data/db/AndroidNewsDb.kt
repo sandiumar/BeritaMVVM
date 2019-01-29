@@ -6,7 +6,7 @@ import id.sandyu.beritamvvm.domain.model.Article
 
 @Database(
     entities = [
-    Article::class
+        Article::class
     ],
     version = 1,
     exportSchema = false)

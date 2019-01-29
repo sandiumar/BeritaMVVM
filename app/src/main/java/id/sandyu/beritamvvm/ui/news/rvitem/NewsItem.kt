@@ -1,6 +1,9 @@
 package id.sandyu.beritamvvm.ui.news.rvitem
 
 import android.util.Log
+import com.bumptech.glide.Glide
+import id.sandyu.beritamvvm.R
+import id.sandyu.beritamvvm.di.GlideApp
 import id.sandyu.beritamvvm.domain.model.Article
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -10,7 +13,7 @@ interface NewsListener{
     fun onNewsClick(article: Article)
 }
 
-class NewsItem (private val article: Article,
+class NewsItem(private val article: Article,
                 private val listener: NewsListener): Item() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -20,7 +23,17 @@ class NewsItem (private val article: Article,
         Log.d("tag","url gambar -> ${article.image}")
 
         if (article.image.isNotEmpty()) {
-            GlideApp
+            GlideApp.with(viewHolder.itemView.context)
+                .load(article.image)
+                .into(viewHolder.itemView.imgNews)
+        }
+
+        viewHolder.itemView.setOnClickListener{
+            listener.onNewsClick(article)
         }
     }
+
+    override fun getLayout(): Int = R.layout.item_news
+
+
 }
